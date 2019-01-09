@@ -5,9 +5,9 @@ var loginController = require('../core/loginController');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log(req);
-  res.send("Hello");
-  // res.send(JSON.strigify(req));
+  
+  console.log(loginController.connect())
+  res.send("test");
 });
 
 router.get('/login', function(req, res, next) {
