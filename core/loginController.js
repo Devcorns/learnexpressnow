@@ -34,4 +34,5 @@ loginAuth = {
         
     }
 }
+
 module.exports = loginAuth;

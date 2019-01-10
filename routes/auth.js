@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var router = express.Router();
 var loginController = require('../core/loginController');
+var loginController = require('../core/registerController');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -15,7 +16,9 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-  res.sendFile(path.resolve('views/auth/register.html'))
+  let result = register.sv();
+  res.send(result);
+  console.log(result);
 });
 
 
