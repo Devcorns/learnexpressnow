@@ -16,7 +16,15 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-  let result = register.sv();
+  let result = register.save(
+    { 
+      username:"mafiaking",
+      fname:"Prakhar", 
+      lname:"Mathur",
+      mobile:"9716273125",
+      password:'1234'
+    }
+  );
   res.send(result);
   console.log(result);
 });
