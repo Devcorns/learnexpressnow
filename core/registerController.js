@@ -23,13 +23,13 @@ register = {
                 if(err) console.log(err); 
                 if(val.length) {
                     
-                    callback("User already");
+                    callback("User already reg");
                     // console.log(val.length); 
                 }
             }))
             
             if(data.length) {
-                
+                 
                 RegModel.insertMany(signupInstance,function(err,data) {
 
                     if (err) return err;

@@ -18,7 +18,7 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   let result = register.save(
     { 
-      username:"baluta",
+      username:"mafuin",
       fname:"Prakhar", 
       lname:"Mathur",
       mobile:"9716273125",
