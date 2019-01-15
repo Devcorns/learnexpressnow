@@ -3,29 +3,40 @@ var Schemas = require('./schemas');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+mongoose.connect('mongodb://localhost:27017/user', {useNewUrlParser: true});    
+var SignupModel = new Schema(Schemas.regSchema);
+var RegModel = mongoose.model('regusers',SignupModel );
+
 register = {
 
-    save:function(signupInstance){
-        mongoose.connect('mongodb://localhost:27017/user', {useNewUrlParser: true});
-       
-        var SignupModel = new Schema(Schemas.regSchema);
-          
-        var RegModel = mongoose.model('regusers',SignupModel );
+    save:function(signupInstance, callback){
+        
 
         /**
         * Checks table is present or not in database
         */
 
-        if(RegModel.find({}, function(err, data) {     
+        if( RegModel.find( {} , function(err, data) {     
+            
+            /**this condition is used to find usearname exist or not */
+            if(RegModel.find( {"username":signupInstance.username} ,function(err,val) {
+                if(err) console.log(err); 
+                if(val.length) {
+                    
+                    callback("User already");
+                    // console.log(val.length); 
+                }
+            }))
             
             if(data.length) {
                 
-                RegModel.insertMany(signupInstance,function(err,data){
+                RegModel.insertMany(signupInstance,function(err,data) {
 
                     if (err) return err;
                     console.log(data);
+                    callback("User inserted");
                     
-                })
+                } )
 
             } else {
               
@@ -36,16 +47,23 @@ register = {
                           
                     if (err) return err;    
                     console.log(res);
+                    callback("New collection created with new user");
                 
               });
             }
-
-           }))
         
-           saveData = function(){ }
+
+           } ) ){}
+           
+          
+               
+          
+          
     }
 
 
 }
 
 module.exports = register;
+
+

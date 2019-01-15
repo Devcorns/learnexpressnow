@@ -18,17 +18,18 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   let result = register.save(
     { 
-      username:"mafiaking",
+      username:"baluta",
       fname:"Prakhar", 
       lname:"Mathur",
       mobile:"9716273125",
       password:'1234'
+    }, function(callback){
+      
+      res.send(callback)
+
     }
   );
-  res.send(result);
-  console.log(result);
+  // console.log(result);
 });
-
-
 
 module.exports = router;
